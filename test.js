@@ -2,10 +2,7 @@ const { spawn } = require('child_process');
 const http = require('http');
 
 const server = http.createServer((req, res) => {
-  // Call Python script when server is accessed
   callPythonScript();
-  
-  // Send response
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/plain');
   res.end('Node.js server is running!\n');
@@ -18,7 +15,7 @@ server.listen(PORT, () => {
 });
 
 function callPythonScript() {
-  const pythonProcess = spawn('python', ['hello.py']);
+  const pythonProcess = spawn('python', ['test.py']);
 
   pythonProcess.stdout.on('data', (data) => {
     console.log(`Python script output: ${data}`);
